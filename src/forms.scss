@@ -1,0 +1,10 @@
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid $brand-success;
+}
+.ng-touched.ng-invalid:not(form)  {
+  border-left: 5px solid $brand-danger;
+} 
+
+.ng-untouched:not(form) {
+  border-left: 5px solid $brand-info;
+}
