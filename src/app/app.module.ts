@@ -5,14 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MeetupeventComponent } from './meetupevent/meetupevent.component';
-import { RsvpFormComponent } from './rsvp-form/rsvp-form.component';
 import { ExtendedInputComponent } from './extended-input/extended-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeetupeventComponent,
-    RsvpFormComponent,
     ExtendedInputComponent
   ],
   imports: [

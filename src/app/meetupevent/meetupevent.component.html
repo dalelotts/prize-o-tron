@@ -1,46 +1,35 @@
-<form name="meetupSetup" role="form" (submit)="importNames(apiKey, eventId)" #meetupForm="ngForm">
+<form
+  role="form" 
+  (submit)="importNames(meetupForm.controls.meetupApiKey, meetupForm.controls.eventId)" 
+  [formGroup]="meetupForm">
 
   <div class="form-group text-info">Complete the fields below to import the names of the members who've RSVPed Yes to your event.
   </div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="key">Meetup API Key</label>
-        <input id="key" 
-               type="password" 
-               class="form-control" 
-               [(ngModel)]="apiKey" 
-               name="apiKey"
-               required="true"
-               #key="ngModel">
-         <div [hidden]="key.valid || key.pristine"
-             class="alert alert-danger">
-          API key is required
-        </div>
-        <span class="help-block">You can get your API Key code <a href="https://secure.meetup.com/meetup_api/key/" target="_blank">here</a>. We do not store your API Key.</span>
-      </div>
+  <extended-input [labelText]="'Meetup API Key'"
+       [control]="meetupForm.controls.meetupApiKey">
+    <input id="key" 
+           type="password" 
+           class="form-control" 
+           formControlName="meetupApiKey">
+  </extended-input>
 
-      <div class="form-group">
-        <label>Meetup Event ID *</label>
-        <input type="number" 
-               class="form-control" 
-               [(ngModel)]="eventId" 
-               name="eventId"
-               required="true"
-               #event="ngModel">
-         <div [hidden]="event.valid || event.pristine"
-             class="alert alert-danger">
-          Event ID is required
-        </div>
-        <span class="help-block">The numerical event ID at the end of the event page url</span>
-        <span class="help-block"><a (click)="addEvent()">Add another event id</a> (Names will be merged into a single list)</span>
-      </div>
-    </div>
-  </div>
+    <span class="help-block">You can get your API Key code <a href="https://secure.meetup.com/meetup_api/key/" target="_blank">here</a>. We do not store your API Key.</span>
+
+
+  <extended-input [labelText]="'Meetup Event ID'"
+        [control]="meetupForm.controls.eventId">
+    <input type="number" 
+           class="form-control" 
+           formControlName="eventId">
+  </extended-input>
+
+    <span class="help-block">The numerical event ID at the end of the event page url</span>
+    <span class="help-block"><a (click)="addEvent()">Add another event id</a> (Names will be merged into a single list)</span>
+
   <div class="form-group">
     <button class="btn btn-primary" 
-            [disabled]="!meetupForm.form.valid">
+            [disabled]="!meetupForm.valid">
       Import Names
     </button>
     <span class="badge">0</span> names available

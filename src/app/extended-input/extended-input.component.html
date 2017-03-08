@@ -1,6 +1,10 @@
-<div class="form-group"
-     [ngClass]="{'has-error': isError(control), 'has-success': isValid(control)}">
-  <label class="control-label">{{labelText}}
-    <ng-content></ng-content>
-  </label>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group"
+         [ngClass]="{'has-error': isError(control), 'has-success': isValid(control)}">
+      <label class="control-label">{{labelText}}
+        <ng-content></ng-content>
+      </label>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,15 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Inject
 } from '@angular/core';
+
+import { 
+  FormBuilder, 
+  FormGroup, 
+  Validators, 
+  FormControl 
+} from '@angular/forms';
 
 import {
   RsvpService
@@ -16,11 +24,19 @@ import {
 export class MeetupeventComponent implements OnInit {
 
   events: Object[]
+  meetupForm:FormGroup;
 
-  constructor(private rsvpService: RsvpService) {
+  constructor(@Inject(FormBuilder) formBuilder: FormBuilder, private rsvpService: RsvpService) {
     this.events = [{
       event_id: null
     }]
+
+    this.meetupForm = formBuilder.group({
+      meetupApiKey: [ '', Validators.compose([Validators.required, Validators.minLength(11)]) ],
+      eventId: ["", Validators.compose([Validators.required, Validators.minLength(11)]) ]
+    });
+
+    console.log(this.meetupForm);
   }
 
   ngOnInit() {}
@@ -31,7 +47,7 @@ export class MeetupeventComponent implements OnInit {
     })
   }
   
-  importNames(apiKey, eventId) {
-    alert(apiKey + ", " + eventId)
+  importNames(apiKey:FormControl, eventId:FormControl) {
+    alert(apiKey.value + ", " + eventId.value);
   }
 }
