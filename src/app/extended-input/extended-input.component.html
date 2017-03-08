@@ -1,0 +1,6 @@
+<div class="form-group"
+     [ngClass]="{'has-error': isError(control), 'has-success': isValid(control)}">
+  <label class="control-label">{{labelText}}
+    <ng-content></ng-content>
+  </label>
+</div>
