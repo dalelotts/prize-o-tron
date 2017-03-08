@@ -35,8 +35,6 @@ export class MeetupeventComponent implements OnInit {
       meetupApiKey: [ '', Validators.compose([Validators.required, Validators.minLength(11)]) ],
       eventId: ["", Validators.compose([Validators.required, Validators.minLength(11)]) ]
     });
-
-    console.log(this.meetupForm);
   }
 
   ngOnInit() {}

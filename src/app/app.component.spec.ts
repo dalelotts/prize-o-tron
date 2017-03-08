@@ -1,15 +1,22 @@
 import { TestBed, async } from '@angular/core/testing';
 
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { MeetupeventComponent } from './meetupevent/meetupevent.component';
+import { ExtendedInputComponent } from './extended-input/extended-input.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MeetupeventComponent
+        MeetupeventComponent,
+        ExtendedInputComponent
       ],
+      imports: [
+        ReactiveFormsModule
+      ]
     }).compileComponents();
   }));
 
