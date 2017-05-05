@@ -5,6 +5,7 @@ import { MeetupeventComponent } from './meetupevent.component';
 import { MaterialModule } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 
 describe('MeetupeventComponent', () => {
   let component: MeetupeventComponent;
@@ -13,8 +14,9 @@ describe('MeetupeventComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:[
-        MaterialModule.forRoot(),
-        BrowserAnimationsModule
+        MaterialModule,
+        BrowserAnimationsModule,
+        HttpModule
       ],
       declarations: [ MeetupeventComponent ]
     })

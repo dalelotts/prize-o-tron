@@ -6,13 +6,15 @@ import { MeetupeventComponent } from './meetupevent/meetupevent.component';
 import { MaterialModule } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
-        MaterialModule.forRoot(),
-        BrowserAnimationsModule
+      imports: [
+        MaterialModule,
+        BrowserAnimationsModule,
+        HttpModule
       ],
       declarations: [
         AppComponent,
