@@ -19,7 +19,7 @@ import { MaterialModule } from '@angular/material';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule.forRoot()
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
