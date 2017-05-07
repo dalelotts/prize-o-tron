@@ -1,49 +1,51 @@
 <md-card>
   <form name="meetupSetup" role="form">
-    
+
     <div class="form-group text-info">Complete the fields below to import the names of the members who've RSVPed Yes to
       your event.
     </div>
-    
+
     <div class="form-group">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xs-6">
           <md-input-container>
-            <input mdInput id="key" type="password" placeholder="Meetup API Key" required="true" #apiKey>
+            <input mdInput id="key" value="4413715419d7a741f1a662046440" type="password" placeholder="Meetup API Key"
+                   required="true" #apiKey>
           </md-input-container>
         </div>
       </div>
       <span class="help-block">You can get your API Key code <a href="https://secure.meetup.com/meetup_api/key/"
                                                                 target="_blank">here</a>. We do not store your API Key.</span>
     </div>
-    
+
     <div class="form-group">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xs-6">
           <md-input-container>
-            <input mdInput type="input" placeholder="Meetup Event ID" required="true" #eventId>
+            <input mdInput type="input" value="239336990" placeholder="Meetup Event ID" required="true" #eventId>
           </md-input-container>
         </div>
       </div>
       <span class="help-block">The numerical event ID at the end of the event page url</span>
       <span class="help-block"><a (click)="addEvent()">Add another event id</a> (Names will be merged into a single list)</span>
     </div>
-    
+
     <div class="form-group">
-      <button md-raised-button color="primary" (click)="importNames(apiKey.value, eventId.value)"
-              data-ng-disabled="meetupSetup.$invalid">Import
-        Names
+      <button md-raised-button color="primary" (click)="importNames(apiKey.value, eventId.value)">
+        Import Names
       </button>
       <span class="badge">{{attendees?.length}}</span> names available
     </div>
   </form>
-  
+
   <md-list>
-    <md-list-item *ngFor="let attendee of attendees">
-      <img style="height: 40px; width: 40px;" md-list-avatar src="{{attendee.photo}}">
-      <div md-line>{{attendee.name}}</div>
-    </md-list-item>
+    <div class="row">
+      <div class="col-xs-4" *ngFor="let attendee of attendees;">
+        <md-list-item>
+          <img md-list-avatar src="{{attendee.photo}}">
+          <div md-line>{{attendee.name}}</div>
+        </md-list-item>
+      </div>
+    </div>
   </md-list>
-
 </md-card>
-

@@ -11,17 +11,16 @@ import { Attendee } from './attendee';
 export class RsvpService {
 
   getAttendees(apiKey: string, eventId: string): Observable<Attendee[]> {
-    return this.http.get(`/api/rsvps?key=${apiKey}&event_id=${eventId}`)
+    return this.http.get(`/api/rsvps?key=${apiKey}&event_id=${eventId}&rsvp=yes`)
       .map((data) => {
-        let body = data.json();
-        return body.results.map((result) => {
-          console.log(result)
-          return {
-            name: result.member.name,
-            photo: result.member_photo ? result.member_photo.photo_link : "" //Some users don't have photos
-          };
-        });
-      }
+          let body = data.json();
+          return body.results.map((result) => {
+            return {
+              name: result.member.name,
+              photo: result.member_photo ? result.member_photo.photo_link : '',
+            };
+          });
+        }
       )
       .catch(this.handleError);
   }
@@ -39,7 +38,8 @@ export class RsvpService {
     return Observable.throw(errMsg);
   }
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
 
 }

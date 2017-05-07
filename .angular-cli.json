@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "prize-o-tron-theme.scss",
         "styles.scss"
       ],
       "scripts": [],

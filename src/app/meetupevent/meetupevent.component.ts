@@ -1,6 +1,5 @@
 import {
-  Component,
-  OnInit
+  Component
 } from '@angular/core';
 
 import {
@@ -15,18 +14,16 @@ import { Attendee } from '../attendee';
   styleUrls: ['./meetupevent.component.scss'],
   providers: [RsvpService]
 })
-export class MeetupeventComponent implements OnInit {
+export class MeetupeventComponent {
 
   private attendees: Attendee[];
 
-  constructor(private rsvpService: RsvpService) { }
-
-  ngOnInit() { }
+  constructor(private rsvpService: RsvpService) {
+  }
 
   importNames(apiKey, eventId) {
     this.rsvpService.getAttendees(apiKey, eventId)
       .subscribe(res => {
-        console.log(res);
         this.attendees = res;
       });
   }
