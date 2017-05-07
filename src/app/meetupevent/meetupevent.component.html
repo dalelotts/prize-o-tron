@@ -1,42 +1,71 @@
 <md-card>
-  <form name="meetupSetup" role="form">
+  <div class="row">
+    <div class="col-xs-6">
+      <form name="meetupSetup" role="form">
 
-    <div class="form-group text-info">Complete the fields below to import the names of the members who've RSVPed Yes to
-      your event.
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div class="col-xs-6">
-          <md-input-container>
-            <input mdInput id="key" type="password" placeholder="Meetup API Key"
-                   required="true" #apiKey>
-          </md-input-container>
+        <div class="form-group text-info">Complete the fields below to import the names of the members who've RSVPed Yes
+          to
+          your event.
         </div>
-      </div>
-      <span class="help-block">You can get your API Key code <a href="https://secure.meetup.com/meetup_api/key/"
-                                                                target="_blank">here</a>. We do not store your API Key.</span>
-    </div>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-xs-6">
-          <md-input-container>
-            <input mdInput type="input" placeholder="Meetup Event ID" required="true" #eventId>
-          </md-input-container>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-8">
+              <md-input-container>
+                <input mdInput id="key" type="password" value="4413715419d7a741f1a662046440"
+                       placeholder="Meetup API Key"
+                       required="true" #apiKey>
+              </md-input-container>
+            </div>
+          </div>
+          <span class="help-block">You can get your API Key code <a href="https://secure.meetup.com/meetup_api/key/"
+                                                                    target="_blank">here</a>. We do not store your API Key.</span>
         </div>
-      </div>
-      <span class="help-block">The numerical event ID at the end of the event page url</span>
-      <span class="help-block"><a (click)="addEvent()">Add another event id</a> (Names will be merged into a single list)</span>
-    </div>
 
-    <div class="form-group">
-      <button md-raised-button color="primary" (click)="importNames(apiKey.value, eventId.value)">
-        Import Names
-      </button>
-      <span class="badge">{{attendees?.length}}</span> names available
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-8">
+              <md-input-container>
+                <input mdInput type="input" value="239336990" placeholder="Meetup Event ID" required="true" #eventId>
+              </md-input-container>
+            </div>
+          </div>
+          <span class="help-block">The numerical event ID at the end of the event page url</span>
+          <span class="help-block"><a (click)="addEvent()">Add another event id</a> (Names will be merged into a single list)</span>
+        </div>
+
+        <div class="form-group">
+          <button md-raised-button color="primary" (click)="importNames(apiKey.value, eventId.value)">
+            Import Names
+          </button>
+          <span *ngIf="attendees" class="badge">{{attendees?.length}}</span> names available
+
+        </div>
+      </form>
     </div>
-  </form>
+    <div class="col-xs-6">
+      <span *ngIf="attendees?.length">
+          <md-toolbar>
+            <div class="row between-xs">
+              <button md-raised-button color="primary" (click)="selectRSVP()">
+                Pick A Winner
+              </button>
+              <button md-raised-button color="accent" (click)="shameWinner()">
+                Shame
+              </button>
+            </div>
+          </md-toolbar>
+
+        <div class="image" *ngIf="winner">
+          <h2>{{winner.name}}</h2>
+          <img style="height: 250px; width: 100%;" src="{{winner.photo}}">
+          <div *ngIf="shame">
+            <div class="shame">SHAME</div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
 
   <md-list>
     <div class="row">

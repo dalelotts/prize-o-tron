@@ -1,5 +1,5 @@
 import {
-  Component
+  Component, Inject
 } from '@angular/core';
 
 import {
@@ -16,15 +16,30 @@ import { Attendee } from '../attendee';
 })
 export class MeetupeventComponent {
 
+  public winner: Attendee;
+  public shame: boolean;
   private attendees: Attendee[];
 
   constructor(private rsvpService: RsvpService) {
   }
 
-  importNames(apiKey, eventId) {
+  public importNames(apiKey, eventId) {
     this.rsvpService.getAttendees(apiKey, eventId)
-      .subscribe(res => {
+      .subscribe((res) => {
+        console.log(res);
         this.attendees = res;
       });
+  }
+
+  public selectRSVP() {
+    let index = Math.floor(Math.random() * (this.attendees.length - 1));
+
+    this.shame = false;
+    this.winner = this.attendees[index];
+    this.attendees.splice(index, 1)[0];
+  }
+
+  public shameWinner() {
+    this.shame = true;
   }
 }
