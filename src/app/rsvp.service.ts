@@ -17,7 +17,7 @@ export class RsvpService {
           return body.results.map((result) => {
             return {
               name: result.member.name,
-              photo: result.member_photo ? result.member_photo.photo_link : '',
+              photo: result.member_photo ? result.member_photo.photo_link : 'http://dazedimg.dazedgroup.netdna-cdn.com/786/azure/dazed-prod/1120/0/1120288.jpg',
             };
           });
         }
