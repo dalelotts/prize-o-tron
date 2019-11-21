@@ -4,8 +4,7 @@
       <form [formGroup]="meetUpDetailForm" name="meetupSetup" role="form">
 
         <div class="form-group text-info">Complete the fields below to import the names of the members who've RSVPed Yes
-          to
-          your event.
+          to your event.
         </div>
 
         <div class="form-group">
@@ -51,7 +50,7 @@
               <button (click)="selectWinner()" color="primary" mat-raised-button>
                 Pick A Winner
               </button>
-              <button (click)="shame = true" color="accent" mat-raised-button>
+              <button [disabled]="!winner" (click)="shame = true" color="accent" mat-raised-button>
                 Shame
               </button>
             </div>
