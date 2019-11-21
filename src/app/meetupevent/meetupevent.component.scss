@@ -14,7 +14,11 @@
   padding-top: 20px;
 }
 
-.image {
+.names-available {
+  padding-top: 20px;
+}
+
+img.winner {
   position: relative;
   width: 100%;
 }
@@ -24,21 +28,6 @@
   width: 100%;
   color: red;
   font-size: 158px;
-  top: 80px;
-  font-family: Georgia;
-}
-
-.badge {
-  display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: #777;
-  border-radius: 10px;
+  top: 300px;
+  font-family: Georgia, sans-serif;
 }

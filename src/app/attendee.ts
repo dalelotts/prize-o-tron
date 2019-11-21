@@ -1,5 +1,4 @@
 export interface Attendee {
-    name: string,
-    photo: string,
-    response: string
+  name: string,
+  photo: string,
 }

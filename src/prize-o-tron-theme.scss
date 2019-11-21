@@ -10,10 +10,10 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $prize-app-primary: mat-palette($mat-light-blue);
-$prize-app-accent:  mat-palette($mat-orange, A200, A100, A400);
+$prize-app-accent: mat-palette($mat-orange, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$prize-app-warn:    mat-palette($mat-red);
+$prize-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $prize-app-theme: mat-light-theme($prize-app-primary, $prize-app-accent, $prize-app-warn);

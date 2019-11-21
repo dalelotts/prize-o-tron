@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
+    "downlevelIteration": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
-      "es2016"
+      "es2016",
+      "dom"
     ],
     "outDir": "../out-tsc/spec",
-    "module": "commonjs",
-    "target": "es6",
+    "module": "esnext",
+    "target": "es2015",
     "baseUrl": "",
     "types": [
       "jasmine",
@@ -18,7 +20,8 @@
     ]
   },
   "files": [
-    "test.ts"
+    "test.ts",
+    "polyfills.ts"
   ],
   "include": [
     "**/*.spec.ts"

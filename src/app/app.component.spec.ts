@@ -1,25 +1,46 @@
-import { TestBed, async } from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
-import { MeetupeventComponent } from './meetupevent/meetupevent.component';
+import {AppComponent} from './app.component';
+import {MeetupeventComponent} from './meetupevent/meetupevent.component';
 
-import { MaterialModule } from '@angular/material';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule } from '@angular/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {RsvpService} from './rsvp.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule,
         BrowserAnimationsModule,
-        HttpModule
+        BrowserModule,
+        FormsModule,
+        HttpClientTestingModule,
+        MatBadgeModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatListModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
       ],
       declarations: [
         AppComponent,
         MeetupeventComponent
       ],
+      providers: [
+        RsvpService
+      ]
     }).compileComponents();
   }));
 

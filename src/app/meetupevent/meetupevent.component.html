@@ -1,7 +1,7 @@
-<md-card>
+<mat-card>
   <div class="row">
     <div class="col-xs-6">
-      <form name="meetupSetup" role="form">
+      <form [formGroup]="meetUpDetailForm" name="meetupSetup" role="form">
 
         <div class="form-group text-info">Complete the fields below to import the names of the members who've RSVPed Yes
           to
@@ -11,54 +11,55 @@
         <div class="form-group">
           <div class="row">
             <div class="col-xs-8">
-              <md-input-container>
-                <input mdInput id="key" type="password"
-                       placeholder="Meetup API Key"
-                       required="true" #apiKey>
-              </md-input-container>
+              <mat-form-field>
+                <input #groupName formControlName="groupName" id="key"
+                       matInput
+                       placeholder="Meetup group name"
+                       required
+                       type="text">
+              </mat-form-field>
             </div>
           </div>
-          <span class="help-block">You can get your API Key code <a href="https://secure.meetup.com/meetup_api/key/"
-                                                                    target="_blank">here</a>. We do not store your API Key.</span>
+          <span class="help-block">From www.meetup.com/<strong>group-name</strong>/events/event-id</span>
         </div>
 
         <div class="form-group">
           <div class="row">
             <div class="col-xs-8">
-              <md-input-container>
-                <input mdInput type="input" placeholder="Meetup Event ID" required="true" #eventId>
-              </md-input-container>
+              <mat-form-field>
+                <input #eventId formControlName="eventId" matInput placeholder="Meetup Event ID" required type="number">
+              </mat-form-field>
             </div>
           </div>
-          <span class="help-block">The numerical event ID at the end of the event page url</span>
-          <span class="help-block"><a (click)="addEvent()">Add another event id</a> (Names will be merged into a single list)</span>
+          <span class="help-block">From www.meetup.com/group-name/events/<strong>event-id</strong></span>
         </div>
 
         <div class="form-group">
-          <button md-raised-button color="primary" (click)="importNames(apiKey.value, eventId.value)">
+          <button (click)="importNames(groupName.value, eventId.value)" [disabled]=meetUpDetailForm.errors color="primary"
+                  mat-raised-button>
             Import Names
           </button>
-          <span *ngIf="attendees" class="badge">{{attendees?.length}}</span> names available
-
+          <p *ngIf="attendees?.length" class="names-available"><span [matBadge]="attendees.length"
+                                                                     matBadgeOverlap="false">Names available</span></p>
         </div>
       </form>
     </div>
     <div class="col-xs-6">
       <span *ngIf="attendees?.length">
-          <md-toolbar>
+          <mat-toolbar>
             <div class="row between-xs">
-              <button md-raised-button color="primary" (click)="selectRSVP()">
+              <button (click)="selectWinner()" color="primary" mat-raised-button>
                 Pick A Winner
               </button>
-              <button md-raised-button color="accent" (click)="shameWinner()">
+              <button (click)="shame = true" color="accent" mat-raised-button>
                 Shame
               </button>
             </div>
-          </md-toolbar>
+          </mat-toolbar>
 
-        <div class="image" *ngIf="winner">
+        <div *ngIf="winner" class="image">
           <h2>{{winner.name}}</h2>
-          <img style="height: 250px; width: 100%;" src="{{winner.photo}}">
+          <img class="winner" src="{{winner.photo}}">
           <div *ngIf="shame">
             <div class="shame">SHAME</div>
           </div>
@@ -67,14 +68,14 @@
     </div>
   </div>
 
-  <md-list>
+  <mat-list>
     <div class="row">
-      <div class="col-xs-4" *ngFor="let attendee of attendees;">
-        <md-list-item>
-          <img md-list-avatar src="{{attendee.photo}}">
-          <div md-line>{{attendee.name}}</div>
-        </md-list-item>
+      <div *ngFor="let attendee of attendees;" class="col-xs-4">
+        <mat-list-item>
+          <img mat-list-avatar src="{{attendee.photo}}">
+          <div mat-line>{{attendee.name}}</div>
+        </mat-list-item>
       </div>
     </div>
-  </md-list>
-</md-card>
+  </mat-list>
+</mat-card>

@@ -1,45 +1,53 @@
-import {
-  Component, Inject
-} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 
-import {
-  RsvpService
-} from '../rsvp.service';
+import {RsvpService} from '../rsvp.service';
 
-import { Attendee } from '../attendee';
+import {Attendee} from '../attendee';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-meetupevent',
   templateUrl: './meetupevent.component.html',
   styleUrls: ['./meetupevent.component.scss'],
-  providers: [RsvpService]
 })
 export class MeetupeventComponent {
 
-  public winner: Attendee;
-  public shame: boolean;
-  private attendees: Attendee[];
+  winner: Attendee;
+  shame: boolean;
+  attendees: Attendee[];
+  meetUpDetailForm: FormGroup;
 
   constructor(private rsvpService: RsvpService) {
+    this.meetUpDetailForm = new FormGroup(
+      {
+        groupName: new FormControl('', [Validators.required]),
+        eventId: new FormControl('', Validators.required),
+      },
+      this.rollupControlErrors
+    );
   }
 
-  public importNames(apiKey, eventId) {
-    this.rsvpService.getAttendees(apiKey, eventId)
-      .subscribe((res) => {
-        console.log(res);
-        this.attendees = res;
-      });
+  importNames(groupName: string, eventId: string) {
+    this.rsvpService.getAttendees(groupName, eventId)
+      .subscribe(
+        response => this.attendees = response,
+        error => alert(`Error getting attendees:\n\n${JSON.stringify(error)}`)
+      );
   }
 
-  public selectRSVP() {
-    let index = Math.floor(Math.random() * (this.attendees.length - 1));
-
+  selectWinner() {
+    const index = Math.floor(Math.random() * (this.attendees.length - 1));
+    this.winner = this.attendees.splice(index, 1)[0];
     this.shame = false;
-    this.winner = this.attendees[index];
-    this.attendees.splice(index, 1)[0];
   }
 
-  public shameWinner() {
-    this.shame = true;
+  private rollupControlErrors(form: FormGroup) {
+    return Object.keys(form.controls)
+      .map(controlName => form.get(controlName))
+      .reduce((accumulator: any, control: FormControl) => {
+          return Object.assign({}, accumulator, control.errors);
+        },
+        null
+      );
   }
 }
