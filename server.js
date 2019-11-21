@@ -4,6 +4,19 @@ const path = require('path');
 
 const app = express();
 
+const forceSSL = () => {
+  return function (request, response, next) {
+    if (request.headers['x-forwarded-proto'] !== 'https') {
+      return response.redirect(
+        ['https://', request.get('Host'), request.url].join('')
+      );
+    }
+    next();
+  }
+};
+
+app.use(forceSSL());
+
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/'));
 
