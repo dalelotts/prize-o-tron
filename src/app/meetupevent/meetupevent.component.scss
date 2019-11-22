@@ -18,15 +18,21 @@
   padding-top: 20px;
 }
 
-img.winner {
+.winner-container {
   position: relative;
   width: 100%;
-}
-
-.shame {
-  position: absolute;
-  color: red;
-  font-size: 158px;
-  top: 40%;
-  font-family: Georgia, sans-serif;
+  img {
+    display: block;
+    width: auto;
+    height: 250px;
+  }
+  .shame {
+    color: red;
+    font-size: 150px;
+    line-height: 1.5em;
+    text-shadow: 2px 2px 2px #000;
+    position: absolute;
+    top: 20%;
+    width: 100%;
+  }
 }

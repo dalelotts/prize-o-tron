@@ -56,12 +56,10 @@
             </div>
           </mat-toolbar>
 
-        <div *ngIf="winner" class="image">
+        <div *ngIf="winner" class="winner-container">
           <h2>{{winner.name}}</h2>
           <img class="winner" src="{{winner.photo}}">
-          <div *ngIf="shame">
-            <div class="shame">SHAME</div>
-          </div>
+          <div class="shame" *ngIf="shame">SHAME</div>
         </div>
       </span>
     </div>
