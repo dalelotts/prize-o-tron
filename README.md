@@ -1,6 +1,18 @@
 # PrizeOTron
 
+[![Build Status](https://travis-ci.org/dalelotts/prize-o-tron.png?branch=master)](https://travis-ci.org/dalelotts/prize-o-tron)
+[![Dependency Status](https://david-dm.org/dalelotts/prize-o-tron.svg)](https://david-dm.org/dalelotts/prize-o-tron)
+[![devDependency Status](https://david-dm.org/dalelotts/prize-o-tron/dev-status.png)](https://david-dm.org/dalelotts/prize-o-tron#info=devDependencies)
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+[Live Page](https://prize-o-tron.herokuapp.com/)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+
+## Support the project
+I know this is a tiny application but many people use it to award meetup prizes (high 5 to all of us) - if you happen to use this app please click the star button (at the top of the page) - it means a lot to all the contributors.
 
 ## Project setup
 
