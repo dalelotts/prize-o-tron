@@ -35,6 +35,8 @@ describe('MeetupeventComponent', () => {
   ];
 
   beforeEach(async(() => {
+    window['gtag'] = jasmine.createSpy('gtag');
+
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,

@@ -5,6 +5,8 @@ import {RsvpService} from '../rsvp.service';
 import {Attendee} from '../attendee';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
+declare let gtag: Function;
+
 @Component({
   selector: 'app-meetupevent',
   templateUrl: './meetupevent.component.html',
@@ -28,6 +30,15 @@ export class MeetupeventComponent {
   }
 
   importNames(groupName: string, eventId: string) {
+    gtag('set', {groupName, eventId});
+    gtag('event', 'ImportNames', {
+      'event_label': groupName,
+      'value': eventId
+    });
+
+    this.shame = false;
+    this.winner = undefined;
+
     this.rsvpService.getAttendees(groupName, eventId)
       .subscribe(
         response => this.attendees = response,
@@ -39,6 +50,10 @@ export class MeetupeventComponent {
     const index = Math.floor(Math.random() * (this.attendees.length - 1));
     this.winner = this.attendees.splice(index, 1)[0];
     this.shame = false;
+    gtag('event', 'PickWinner', {
+      'event_label': 'winner',
+      'value': this.winner.name
+    });
   }
 
   private rollupControlErrors(form: FormGroup) {
