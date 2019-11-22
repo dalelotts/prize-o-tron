@@ -1,6 +1,5 @@
 # PrizeOTron
 
-[![Build Status](https://travis-ci.org/dalelotts/prize-o-tron.png?branch=master)](https://travis-ci.org/dalelotts/prize-o-tron)
 [![Dependency Status](https://david-dm.org/dalelotts/prize-o-tron.svg)](https://david-dm.org/dalelotts/prize-o-tron)
 [![devDependency Status](https://david-dm.org/dalelotts/prize-o-tron/dev-status.png)](https://david-dm.org/dalelotts/prize-o-tron#info=devDependencies)
 
