@@ -1,26 +1,41 @@
 # PrizeOTron
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 ## Project setup
 
 1. Install node
-1. Install angular cli `npm install -g @angular/cli`
 1. Fork this repository (click the `fork` button in the top right of the screen)
 1. Clone your fork `git clone https://github.com/[your-user-name]/prize-o-tron`
     - ^^ Note that you must replace **[your-user-name]** with your github user name. 
 1. Install project dependencies
    ```
    cd prize-o-tron
-   git checkout develop
    npm install
    npm test
    ```
-1. Start the server `npm start`
+1. Start the server `npm run-script start:watch` <- This runs the app locally only
 1. Visit http://localhost:4200
 
+## Heroku Server
+
+The app runs slightly differently when deployed to Heroku than when running locally. 
+To run under the same configuration as Heroku, do the following:
+
+```
+cd prize-o-tron
+npm install
+npm run build
+npn start <- runs a local express server on port 4200
+```
+Navigate to `http://localhost:4200/`. 
+
+**The app will NOT automatically reload if you change any of the source files.**
+
+
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm run-script start:watch` for a dev server. Navigate to `http://localhost:4200/`. 
+The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -30,13 +45,17 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## Running all tests
+
+Run `npm test` to execute all unit and end-to-end tests.
+
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run-script test:unit` to execute only the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run-script test:e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help

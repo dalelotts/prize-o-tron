@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import {RsvpService} from './rsvp.service';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {RsvpService} from './rsvp.service';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
     MatToolbarModule,

@@ -13,8 +13,8 @@
     "ng": "ng",
     "postinstall": "ng build --prod",
     "start": "node server.js",
-    "start:watch": "ng serve --proxy-config proxy.conf.json --port 4200",
-    "test": "npm run-script lint && npm run-script test:unit && npm run-script build -- --prod",
+    "start:watch": "ng serve --port 4200",
+    "test": "npm run-script lint && npm run-script test:unit && npm run-script test:e2e && npm run-script build -- --prod",
     "test:e2e": "ng e2e",
     "test:tdd": "ng test --code-coverage",
     "test:unit": "ng test --watch=false --code-coverage"

@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {RsvpService} from './rsvp.service';
+import {MatIconModule} from '@angular/material/icon';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -29,6 +30,7 @@ describe('AppComponent', () => {
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
+        MatIconModule,
         MatInputModule,
         MatListModule,
         MatToolbarModule,

@@ -7,8 +7,8 @@ describe('prize-o-tron App', () => {
     page = new PrizeOTronPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display "The Amazing Prize-O-Tron" as the toolbar title', () => {
     page.navigateTo();
-    expect<any>(page.getParagraphText()).toEqual('The Amazing Prize-O-Tron');
+    expect<any>(page.getToolbarTitle()).toEqual('The Amazing Prize-O-Tron');
   });
 });

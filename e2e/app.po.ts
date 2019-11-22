@@ -5,7 +5,7 @@ export class PrizeOTronPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root span')).getText();
+  getToolbarTitle() {
+    return element(by.className('toolbar-title')).getText();
   }
 }
