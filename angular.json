@@ -126,5 +126,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": "4db7b308-e08f-4170-98a5-30f8c05ec3bf"
   }
 }
