@@ -17,7 +17,9 @@
     "test": "npm run-script lint && npm run-script test:unit && npm run-script test:e2e && npm run-script build -- --prod",
     "test:e2e": "ng e2e",
     "test:tdd": "ng test --code-coverage",
-    "test:unit": "ng test --watch=false --code-coverage"
+    "test:unit": "ng test --watch=false --code-coverage",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -40,7 +42,8 @@
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",
     "typescript": "~3.7.5",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "snyk": "^1.319.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",
@@ -58,5 +61,6 @@
     "protractor": "~5.4.2",
     "ts-node": "~8.5.2",
     "tslint": "^5.20.1"
-  }
+  },
+  "snyk": true
 }
